@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent-primary: oklch(0.6 0.18 25);
+  --accent-secondary: oklch(0.22 0.05 240);
+  --surface: oklch(0.96 0.02 80);
+  --surface-contrast: oklch(0.22 0.05 240);
+  --font-display: 'Fraunces', ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: 'Inter Tight', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+  background: var(--surface);
+  color: var(--surface-contrast);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "cv11", "kern";
+}
+
+.hero-display {
+  text-shadow:
+    0 1px 0 oklch(0 0 0 / 0.04),
+    0 4px 8px oklch(0 0 0 / 0.06),
+    0 16px 32px oklch(0 0 0 / 0.04);
+}
+
+.hero-spotlight {
+  --mx: 0.5;
+  --my: 0.5;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 600px at calc(var(--mx) * 100%) calc(var(--my) * 100%),
+    oklch(from var(--accent-primary) l c h / 0.10),
+    transparent 70%
+  );
+  transition: background 80ms linear;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .hero-spotlight { display: none; }
+}
